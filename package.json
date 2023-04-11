@@ -1,0 +1,23 @@
+{
+  "name": "jobfinder",
+  "version": "1.0.0",
+  "description": "A job portal for job seekers",
+  "main": "server.js",
+  "scripts": {
+    "start":"node server.js",
+    "server":"nodemon server.js"
+  },
+  "keywords": [
+    "Jobportal",
+    "jobfinder",
+    "mongodb",
+    "nodejs",
+    "express"
+  ],
+  "author": "Amandeep Singh",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
