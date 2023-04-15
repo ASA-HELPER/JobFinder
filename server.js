@@ -2,12 +2,15 @@
 // common.js format : const express = require('express');
 // Using type as module
 import express from "express";
+import 'express-async-errors'
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
 import testRoutes from './routes/testRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 import cors from 'cors';
 import morgan from 'morgan';
+import errorMiddleware from "./middlewares/errorMiddleware.js";
 
 // configuring dotenv
 dotenv.config()
@@ -29,6 +32,10 @@ app.use(morgan('dev'));
 
 // route
 app.use('/api/v1/test',testRoutes)
+app.use('/api/v1/auth',authRoutes)
+
+// Error checking middleware or validation middleware
+app.use(errorMiddleware) 
 
 // Port
 const PORT = process.env.PORT || 8080;
