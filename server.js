@@ -2,7 +2,7 @@
 // common.js format : const express = require('express');
 // Using type as module
 import express from "express";
-import 'express-async-errors'
+import 'express-async-errors';
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
