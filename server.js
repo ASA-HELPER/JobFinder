@@ -8,6 +8,7 @@ import colors from "colors";
 import connectDB from "./config/db.js";
 import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import cors from 'cors';
 import morgan from 'morgan';
 import errorMiddleware from "./middlewares/errorMiddleware.js";
@@ -31,8 +32,9 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // route
-app.use('/api/v1/test',testRoutes)
-app.use('/api/v1/auth',authRoutes)
+app.use('/api/v1/test',testRoutes);
+app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/user',userRoutes);
 
 // Error checking middleware or validation middleware
 app.use(errorMiddleware) 
