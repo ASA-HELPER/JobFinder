@@ -14,6 +14,11 @@ import cors from 'cors';
 import morgan from 'morgan';
 import errorMiddleware from "./middlewares/errorMiddleware.js";
 
+// security packages
+import helmet from 'helmet';
+import xss from 'xss-clean';
+import mongoSanitize from "express-mongo-sanitize";
+
 // configuring dotenv
 dotenv.config()
 
@@ -22,6 +27,15 @@ connectDB()
 
 // rest object
 const app = express();
+
+// middleware to secure headers
+app.use(helmet())
+
+// middleware to secure application from cross-site scripting
+app.use(xss())
+
+// middleware to secure mongoDB database
+app.use(mongoSanitize());
 
 // Middleware to tell application that we are dealing with json data
 app.use(express.json());
