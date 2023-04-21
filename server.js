@@ -5,6 +5,8 @@ import express from "express";
 import 'express-async-errors';
 import dotenv from "dotenv";
 import colors from "colors";
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from 'swagger-jsdoc';
 import connectDB from "./config/db.js";
 import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
@@ -24,6 +26,25 @@ dotenv.config()
 
 // Connecting to mongodb
 connectDB()
+
+// Swagger Api config
+// Swagger Api options
+const options = {
+    definition:{
+        openapi:"3.0.0",
+        info:{
+            title:"JobFinder",
+            description:"Backend Project using Node and Expressjs"
+        },
+        servers:[{
+            url:"http://localhost:8080"
+        },],
+    },
+    apis:["./routes/*.js"],
+};
+
+const spec = swaggerDoc(options);
+
 
 // rest object
 const app = express();
@@ -51,6 +72,9 @@ app.use('/api/v1/test',testRoutes);
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/user',userRoutes);
 app.use('/api/v1/job',jobRoutes);
+
+// Home route
+app.use("/api-doc",swaggerUi.serve,swaggerUi.setup(spec));
 
 // Error checking middleware or validation middleware
 app.use(errorMiddleware) 
