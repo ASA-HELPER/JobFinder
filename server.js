@@ -1,12 +1,12 @@
 // Imports
 // common.js format : const express = require('express');
 // Using type as module
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from 'swagger-jsdoc';
 import express from "express";
 import 'express-async-errors';
 import dotenv from "dotenv";
 import colors from "colors";
-import swaggerUi from 'swagger-ui-express';
-import swaggerDoc from 'swagger-jsdoc';
 import connectDB from "./config/db.js";
 import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
@@ -36,11 +36,13 @@ const options = {
             title:"JobFinder",
             description:"Backend Project using Node and Expressjs"
         },
-        servers:[{
-            url:"http://localhost:8080"
-        },],
+        servers:[
+            {
+                url:"http://localhost:8080"
+            }
+        ],
     },
-    apis:["./routes/*.js"],
+    apis:['./routes/*.js'],
 };
 
 const spec = swaggerDoc(options);
