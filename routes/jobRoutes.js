@@ -48,10 +48,136 @@ const router = express.Router()
  */
 
 // routes
+/**
+ *  @swagger
+ *  tags:
+ *    name: Job
+ *    description: Job apis
+ */
+
+/**
+ * @swagger
+ * /api/v1/job/create-job:
+ *    post:
+ *      summary: create new job
+ *      tags: [Job]
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Job'
+ *      responses:
+ *        200:
+ *          description: Job created successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Job'
+ *        500:
+ *          description: internal server error
+ */
+
 router.post('/create-job',userAuth,createJobController);
+
+/**
+ * @swagger
+ * /api/v1/job/get-job:
+ *    post:
+ *      summary: create new job
+ *      tags: [Job]
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Job'
+ *      responses:
+ *        200:
+ *          description: Jobs fetched successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Job'
+ *        500:
+ *          description: internal server error
+ */
+
 router.get('/get-job',userAuth,getAllJobsController);
+
+/**
+ * @swagger
+ * /api/v1/job/update-job/:id:
+ *    post:
+ *      summary: Update job
+ *      tags: [Job]
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Job'
+ *      responses:
+ *        200:
+ *          description: Jobs updated successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Job'
+ *        500:
+ *          description: internal server error
+ */
+
 router.patch('/update-job/:id',userAuth,updateJobController);
+
+/**
+ * @swagger
+ * /api/v1/job/delete-job/:id:
+ *    post:
+ *      summary: Delete job
+ *      tags: [Job]
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Job'
+ *      responses:
+ *        200:
+ *          description: Jobs deleted successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Job'
+ *        500:
+ *          description: internal server error
+ */
+
 router.delete('/delete-job/:id',userAuth,deleteJobController);
+
+/**
+ * @swagger
+ * /api/v1/job/job-stats:
+ *    post:
+ *      summary: Job status
+ *      tags: [Job]
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Job'
+ *      responses:
+ *        200:
+ *          description: Job Status fetched successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Job'
+ *        500:
+ *          description: internal server error
+ */
+
 router.get('/job-stats',userAuth,jobStatsController)
 
 export default router;
