@@ -1,5 +1,13 @@
 import userModel from "../models/userModel.js";
 
+export const getAllUsers = async (req, res, next) => {
+    const users = await userModel.find();
+    res.status(200).json({
+      message: "Users retrieved successfully",
+      users,
+    });
+};
+
 export const updateUserController = async (req,resp,next)=>{
     const {name,email,lastName,location} = req.body;
     if(!name || !email || !lastName || !location)
