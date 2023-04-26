@@ -78,13 +78,14 @@ const router = express.Router()
  *          description: internal server error
  */
 
+// POST ROUTE || CREATE JOB
 router.post('/create-job',userAuth,createJobController);
 
 /**
  * @swagger
  * /api/v1/job/get-job:
- *    post:
- *      summary: create new job
+ *    get:
+ *      summary: Fetch jobs
  *      tags: [Job]
  *      requestBody:
  *       required: true
@@ -103,12 +104,13 @@ router.post('/create-job',userAuth,createJobController);
  *          description: internal server error
  */
 
+// GET ROUTE || FETCH JOBS
 router.get('/get-job',userAuth,getAllJobsController);
 
 /**
  * @swagger
  * /api/v1/job/update-job/:id:
- *    post:
+ *    patch:
  *      summary: Update job
  *      tags: [Job]
  *      requestBody:
@@ -128,12 +130,13 @@ router.get('/get-job',userAuth,getAllJobsController);
  *          description: internal server error
  */
 
+// PATCH ROUTE || UPDATE JOB
 router.patch('/update-job/:id',userAuth,updateJobController);
 
 /**
  * @swagger
  * /api/v1/job/delete-job/:id:
- *    post:
+ *    delete:
  *      summary: Delete job
  *      tags: [Job]
  *      requestBody:
@@ -144,7 +147,7 @@ router.patch('/update-job/:id',userAuth,updateJobController);
  *             $ref: '#/components/schemas/Job'
  *      responses:
  *        200:
- *          description: Jobs deleted successfully
+ *          description: Job deleted successfully
  *          content:
  *            application/json:
  *              schema:
@@ -153,12 +156,13 @@ router.patch('/update-job/:id',userAuth,updateJobController);
  *          description: internal server error
  */
 
+// DELETE ROUTE || DELETE JOB
 router.delete('/delete-job/:id',userAuth,deleteJobController);
 
 /**
  * @swagger
  * /api/v1/job/job-stats:
- *    post:
+ *    get:
  *      summary: Job status
  *      tags: [Job]
  *      requestBody:
@@ -178,6 +182,7 @@ router.delete('/delete-job/:id',userAuth,deleteJobController);
  *          description: internal server error
  */
 
+// GET ROUTE || FETCH JOBS STATUS
 router.get('/job-stats',userAuth,jobStatsController)
 
 export default router;

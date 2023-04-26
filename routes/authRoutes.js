@@ -58,7 +58,7 @@ const router = express.Router()
  *  @swagger
  *  tags:
  *    name: Auth
- *    description: authentication apis
+ *    description: Authentication apis
  */
 
 /**
@@ -84,14 +84,14 @@ const router = express.Router()
  *          description: internal server error
  */
 
-// routes
+// POST ROUTE || REGISTER USER
 router.post('/register',limiter,registerController);
 
 /**
  * @swagger
  * /api/v1/auth/login:
  *  post:
- *    summary: login page
+ *    summary: login user
  *    tags: [Auth]
  *    requestBody:
  *      required: true
@@ -101,7 +101,7 @@ router.post('/register',limiter,registerController);
  *            $ref: '#/components/schemas/User'
  *    responses:
  *      200:
- *        description: login successfull
+ *        description: login successful
  *        content:
  *          application/json:
  *            schema:
@@ -110,6 +110,7 @@ router.post('/register',limiter,registerController);
  *        description: something went wrong
  */
 
+// POST ROUTE || LOGIN USER
 router.post('/login',limiter,loginController);
 
 // export
