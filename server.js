@@ -38,7 +38,7 @@ const options = {
         },
         servers:[
             {
-                url:"https://jobfinder-5wbv.onrender.com/"
+                url:"https://jobfinder-5wbv.onrender.com"
             }
         ],
     },
