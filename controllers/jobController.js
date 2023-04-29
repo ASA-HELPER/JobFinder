@@ -18,7 +18,8 @@ export const getAllJobsController = async (req,resp,next)=>{
 
     // conditions for searching filters
     const queryObject = {
-        createdBy:req.user.userId,
+        // We will use below line when creating frontend
+        // createdBy:req.user.userId
     }
 
     // logic for filtering

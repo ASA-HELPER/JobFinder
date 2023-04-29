@@ -7,6 +7,11 @@ const router = express.Router()
 /**
  * @swagger
  * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
+ *      bearerFormat: JWT
  *  schemas:
  *    Job:
  *      type: object
@@ -47,6 +52,7 @@ const router = express.Router()
  *        createdBy: B237I389B24f82401
  */
 
+
 // routes
 /**
  *  @swagger
@@ -59,6 +65,8 @@ const router = express.Router()
  * @swagger
  * /api/v1/job/create-job:
  *    post:
+ *      security:
+ *          - bearerAuth: []
  *      summary: create new job
  *      tags: [Job]
  *      requestBody:
@@ -85,10 +93,12 @@ router.post('/create-job',userAuth,createJobController);
  * @swagger
  * /api/v1/job/get-job:
  *    get:
+ *      security:
+ *         - bearerAuth: []
  *      summary: Fetch jobs
  *      tags: [Job]
  *      requestBody:
- *       required: true
+ *       required: false
  *       content:
  *         application/json:
  *           schema:
@@ -109,12 +119,21 @@ router.get('/get-job',userAuth,getAllJobsController);
 
 /**
  * @swagger
- * /api/v1/job/update-job/:id:
+ * /api/v1/job/update-job/{id}:
  *    patch:
+ *      security:
+ *         - bearerAuth: []
  *      summary: Update job
  *      tags: [Job]
+ *      parameters:
+ *         - name: id
+ *           in: path
+ *           description: "ID of the user to update it"
+ *           required: true
+ *           schema:
+ *             type: string
  *      requestBody:
- *       required: true
+ *       description: Update an existing user
  *       content:
  *         application/json:
  *           schema:
@@ -135,10 +154,19 @@ router.patch('/update-job/:id',userAuth,updateJobController);
 
 /**
  * @swagger
- * /api/v1/job/delete-job/:id:
+ * /api/v1/job/delete-job/{id}:
  *    delete:
+ *      security:
+ *         - bearerAuth: []
  *      summary: Delete job
  *      tags: [Job]
+ *      parameters:
+ *         - name: id
+ *           in: path
+ *           description: "ID of the user to delete it"
+ *           required: true
+ *           schema:
+ *             type: string
  *      requestBody:
  *       required: true
  *       content:
@@ -163,10 +191,12 @@ router.delete('/delete-job/:id',userAuth,deleteJobController);
  * @swagger
  * /api/v1/job/job-stats:
  *    get:
+ *      security:
+ *         - bearerAuth: []
  *      summary: Job status
  *      tags: [Job]
  *      requestBody:
- *       required: true
+ *       required: false
  *       content:
  *         application/json:
  *           schema:
