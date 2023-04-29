@@ -97,6 +97,27 @@ router.post('/create-job',userAuth,createJobController);
  *         - bearerAuth: []
  *      summary: Fetch jobs
  *      tags: [Job]
+ *      parameters:
+ *        - in: query
+ *          name: status
+ *          schema:
+ *            type: string
+ *          description: Filter job by status
+ *        - in: query
+ *          name: workType
+ *          schema:
+ *            type: string
+ *          description: Filter job by workType
+ *        - in: query
+ *          name: search
+ *          schema:
+ *            type: string
+ *          description: Filter job by position
+ *        - in: query
+ *          name: sort
+ *          schema:
+ *            type: string
+ *          description: Filter job by sorting (latest or oldest) 
  *      requestBody:
  *       required: false
  *       content:
