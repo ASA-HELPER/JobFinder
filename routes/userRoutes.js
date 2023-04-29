@@ -8,6 +8,11 @@ const router = express.Router();
 /**
  * @swagger
  * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
+ *      bearerFormat: JWT
  *  schemas:
  *    User:
  *      type: object
@@ -56,10 +61,11 @@ const router = express.Router();
  * @swagger
  * /api/v1/user/get-users:
  *    get:
+ *      security:
+ *          - bearerAuth: []
  *      summary: Fetched all users
  *      tags: [User]
  *      requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -82,6 +88,8 @@ router.get('/get-users',userAuth,getAllUsers);
  * @swagger
  * /api/v1/user/update-user:
  *    put:
+ *      security:
+ *          - bearerAuth: []
  *      summary: Update user
  *      tags: [User]
  *      requestBody:
