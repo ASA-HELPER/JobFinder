@@ -9,6 +9,11 @@ const router = express.Router()
  * @swagger
  * components:
  *  schemas:
+ *    securitySchemes:
+ *      bearerAuth:
+ *        type: http
+ *        scheme: bearer
+ *        bearerFormat: JWT
  *    User:
  *      type: object
  *      required:
@@ -55,6 +60,8 @@ const router = express.Router()
  *    post:
  *      summary: Testing routes
  *      tags: [Test]
+ *      security:
+ *          - bearerAuth: []
  *      requestBody:
  *       required: true
  *       content:
